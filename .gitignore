@@ -1,0 +1,8 @@
+x64
+*.opendb
+*.db-wal
+*.db-shm
+*.db
+.vs/GoKartComDia-SecurityAccessKeyGenerator/v17/.suo
+*.vsidx
+*.ipch
