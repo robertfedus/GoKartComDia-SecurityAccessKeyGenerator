@@ -13,6 +13,9 @@ uint16_t generateSecurityAccessKey(uint16_t seed)
 int main()
 {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hConsole, 15);
+
+    std::cout << "This is a key generator for DCM SecurityAccess (0x27) service implemented on GoKart" << std::endl << std::endl;
 
     std::cin.unsetf(std::ios::dec);
     std::cin.unsetf(std::ios::hex);
@@ -20,15 +23,17 @@ int main()
 
     uint16_t seed;
 
-    std::cout << "This is a key generator for DCM SecurityAccess (0x27) service implemented on GoKart" << std::endl << std::endl;
-    std::cout << "Enter the seed (in hex): ";
-    std::cin >> std::hex >> seed >> std::dec;
+    for (;;)
+    {
+        std::cout << "Enter seed (in hex): ";
+        std::cin >> std::hex >> seed >> std::dec;
 
-    std::cout << "Seed: 0x" << std::hex << seed << std::dec << std::endl;
-    SetConsoleTextAttribute(hConsole, 2);
-    std::cout << "Key: 0x" << std::hex << generateSecurityAccessKey(seed) << std::dec << std::endl;
+        std::cout << "Seed: 0x" << std::hex << seed << std::dec << std::endl;
+        SetConsoleTextAttribute(hConsole, 2);
+        std::cout << "Key: 0x" << std::hex << generateSecurityAccessKey(seed) << std::dec << std::endl << std::endl;
 
-    SetConsoleTextAttribute(hConsole, 15);
+        SetConsoleTextAttribute(hConsole, 15);
+    }
 
     return 0;
 }
